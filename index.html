@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Box Model & Positioning Cheat Sheet</title>
+    <link rel="stylesheet" href="./Resources/CSS/styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="contents">
+                <li id="one"><a href="#box">The Box Model</a></li>
+                <li id="two"><a href="#position">Positioning</a></li>
+                <li id="three"><a href="#zindex">Z-Index</a></li>
+                <li id="four"><a href="#display">Display</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1><span id='headline'>Cheat Sheet: Basics of Positioning Items on a Web Page</span></h1>
+    
+    <main>
+        <h2 class="box">The Box Model</h2>
+        <figure>
+            <img id="box_model" src="Resources/box_model.png" alt="The Box Model">
+            <figcaption>The Box Model describes the relationship between content, padding, border, and margin. Playing with these can really impact the way that a webpage looks.</figcaption>
+        </figure>
+        <h3>Content</h3>
+            <p>The actual content contained within the borders of the box. Content has two dimensions, height and width.</p>
+        <h3>Padding</h3>
+            <p>The space between the contents of a box and the borders of a box is known as padding. Padding is like the space between a picture and the frame surrounding it. In CSS, you can modify this space with the padding property.</p>
+            <p>The padding property is often used to expand the background color and make the content look less cramped.</p>
+        <h3>Borders</h3>
+            <p>A border is a line that surrounds an element, like a frame around a painting. Borders can be set with a specific width, style, and color.</p>
+            <ul>
+                <li><b>width</b>—The thickness of the border. A border’s thickness can be set in pixels or with one of the following keywords: thin, medium, or thick.</li>
+                <li><b>style</b>—The design of the border. Web browsers can render any of 10 different styles. Some of these styles include: none, dotted, and solid.</li>
+                <li><b>color</b>—The color of the border. Web browsers can render colors using a few different formats, including 140 built-in color keywords.</li>
+            </ul>
+        <h3>Margin</h3>
+            <p>Margin refers to the space directly outside of the box. The margin property is used to specify the size of this space.</p>
+            <ul>
+                <li>auto-- margin-0 auto; will center the divs in their containing elements. The 0 sets the top and bottom margins to 0 pixels. The auto value instructs the browser to adjust the left and right margins until the element is <b>centered within its containing element.</b> </li>
+            </ul>
+            <h4>Margin Arithmetic</h4>
+                <figure>
+                    <img src="Resources/distance.jpg" alt="Vertical Margins Collapse">
+                    <figcaption>Horizontal margins (left and right), like padding, are always displayed and added together. For example, if two divs with ids #div-one and #div-two, are next to each other, they will be as far apart as the sum of their adjacent margins.</figcaption>
+                </figure>
+                <p>As you have seen, padding is space added inside an element’s border, while margin is space added outside an element’s border. One additional difference is that top and bottom margins, also called vertical margins, collapse, while top and bottom padding does not.</p>
+        <h2 class="position">Positioning</h2>
+                <p>The default position of an element can be changed by setting its position property. The position property can take one of five values:</p>
+                    <ul>
+                        <li><b>static</b>—The default value. An element with position: static; is not positioned in any special way. A static element is said to be not positioned and an element with its position set to anything else is said to be positioned.</li>
+                        <li><b>relative</b>—An element with position: relative; is positioned relative to its normal position.</li>
+                            <img src="Resources/relative_code.png" alt="Code to go with next picture">
+                            <img src="Resources/relative_positioning.png" alt="Relative Positioning">
+                        <li><b>absolute</b>—An element with position: absolute; is positioned relative to its closest positioned ancestor. However, if an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.</li>
+                            <figure id="absolute">
+                                <img src="Resources/absolute.png" alt="Absolute Positioning">
+                                <figcaption>The “This website is in progress. Please come back later!” text is displaced from its static position at the top left corner of its parent container. It has offset property declarations of top: 300px; and right: 0px;, positioning it 300 pixels down, and 0 pixels from the right side of the page.</figcaption>
+                            </figure>
+                        <li><b>fixed</b>—An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled. The top, right, bottom, and left properties are used to position the element.</li>
+                            <img src="Resources/fixedcode.png" alt="Fixed Positioning Code">
+                            <figure>
+                                <img id="fixed" src="Resources/Fixed.gif" alt="Fixed Positioning">
+                                <figcaption>We can fix an element to a specific position on the page (regardless of user scrolling) by setting its position to fixed, and accompanying it with the familiar offset properties top, bottom, left, and right.</figcaption>
+                            </figure>
+                        <li><b>sticky</b>—An element with position: sticky; is positioned based on the user’s scroll position. A sticky element toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it “sticks” in place (like position:fixed).</li>
+                            <img src="Resources/sticky_code.png" alt="Sticky Positioning Code">
+                            <figure id="sticky">
+                                <img src="Resources/Sticky.gif" alt="Sticky Positioning">
+                                <figcaption>In the example above, the .box-bottom div will remain in its relative position, and scroll as usual. When it reaches 240 pixels from the top, it will stick to that position until it reaches the bottom of its parent container where it will “unstick” and rejoin the flow of the document.</figcaption>
+                            </figure>
+                    </ul>
+        <h2 id="zindex">Z-Index</h2>
+            <p>When boxes on a web page have a combination of different positions, the boxes (and therefore, their content) can overlap with each other, making the content difficult to read or consume.</p>
+            <img src="Resources/zindex1.png" alt="Z-Index Example 1">
+            <p>In the example above, the .green-box element overlaps on top of the .blue-box element.</p>
+            <p>The z-index property controls how far back or how far forward an element should appear on the web page when elements overlap. This can be thought of as the depth of elements, with deeper elements appearing behind shallower elements.</p>
+            <p>The z-index property accepts integer values. Depending on their values, the integers instruct the browser on the order in which elements should be layered on the web page.</p>
+            <img src="Resources/zindex2.png" alt="Z-Index Example 2">
+            <p>In the example above, we set the .blue-box position to relative and the z-index to 1. We changed position to relative, because the z-index property does not work on static elements. The z-index of 1 moves the .blue-box element forward, because the z-index value has not been explicitly specified for the .green-box element, which means it has a default z-index value of 0. Take a look at the example image below:</p>
+            <img src="Resources/zindex3.png" alt="Z-Index Example 3">        
+        <h2 id="display">Display</h2>
+                <h3 id="inline">Inline Display</h3>
+                    <p>The default display for some elements, such as "em", "strong", and "a", is called inline. Inline elements have a box that wraps tightly around their content, only taking up the amount of space necessary to display their content and not requiring a new line after each element. The height and width of these elements cannot be specified in the CSS document. For example, the text of an anchor tag ("a") will, by default, be displayed on the same line as the surrounding text, and it will only be as wide as necessary to contain its content. inline elements cannot be altered in size with the height or width CSS properties.</p>
+                <h3 id="block">Block</h3>
+                    <p>Some elements are not displayed in the same line as the content around them. These are called block-level elements. These elements fill the entire width of the page by default, but their width property can also be set. Unless otherwise specified, they are the height necessary to accommodate their content.</p>
+                <h3 id="block">Inline Block</h3>
+                    <p>The third value for the display property is inline-block. Inline-block display combines features of both inline and block elements. Inline-block elements can appear next to each other and we can specify their dimensions using the width and height properties. Images are the best example of default inline-block elements.</p>
+                <h3 id="Float">FLoat</h3>
+                    <p>The float property is commonly used for wrapping text around an image. Note, however, that moving elements left or right for layout purposes is better suited for tools like CSS grid and flexbox, which you’ll learn about later on.</p>
+                    <ul>
+                        <li>left - moves, or floats, elements as far left as possible.</li>
+                        <li>right - moves elements as far right as possible.</li>
+                    </ul>
+
+    </main>                
+    <footer>Created by Harrison W. Weaver | This Page Is for Cheat Sheet Use Only | Go Birds</footer>            
+</body>
+
+</html>
